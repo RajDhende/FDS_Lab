@@ -1,7 +1,7 @@
 package Assignments.Assignment2;
 
 public class MyLongArray {
-    private long a[] = null;
+    private long a[];
     private int currentIndex;
 
     MyLongArray(int size) {
