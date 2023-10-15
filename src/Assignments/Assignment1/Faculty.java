@@ -1,4 +1,4 @@
-package Assignment1;
+package Assignments.Assignment1;
 
 public class Faculty extends Human {
     private int empID;

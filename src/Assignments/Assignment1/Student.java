@@ -1,4 +1,4 @@
-package Assignment1;
+package Assignments.Assignment1;
 public class Student extends Human {
     private int roll_no;
     private String classes;
