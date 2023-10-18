@@ -1,30 +1,37 @@
 package Assignments.Assignment3;
 
-
 import java.util.Scanner;
 
+/**
+ * This class provides a test application for managing an array using MyLongArray and Sorting classes.
+ */
 public class TestApplication {
+
+    /**
+     * The main entry point of the program.
+     * @param args Command-line arguments (not used in this program).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the size of the Array : ");
+        System.out.print("Enter the size of the Array: ");
         int size = sc.nextInt();
         MyLongArray la = new MyLongArray(size);
         Sorting st = new Sorting(size);
-        System.out.println("Array of size : " + size + " has been created");
+        System.out.println("Array of size: " + size + " has been created");
         boolean loop = true;
         while (loop) {
-            System.out.println("1)Insert an element.");
-            System.out.println("2)Delete an element.");
-            System.out.println("3)Find an element.");
-            System.out.println("4)Get an element.");
-            System.out.println("5)Display the Array");
-            System.out.println("6)Delete a duplicate value");
-            System.out.println("7)Insert an element at a particular index.");
-            System.out.println("8)Delete an element at a particular index.");
-            System.out.println("9)Sort the Array using bubble sort.");
-            System.out.println("10)Sort the Array using selection sort.");
-            System.out.println("11)Sort the Array using insertion sort.");
-            System.out.println("12)Exit.");
+            System.out.println("1) Insert an element.");
+            System.out.println("2) Delete an element.");
+            System.out.println("3) Find an element.");
+            System.out.println("4) Get an element.");
+            System.out.println("5) Display the Array");
+            System.out.println("6) Delete a duplicate value");
+            System.out.println("7) Insert an element at a particular index.");
+            System.out.println("8) Delete an element at a particular index.");
+            System.out.println("9) Sort the Array using bubble sort.");
+            System.out.println("10) Sort the Array using selection sort.");
+            System.out.println("11) Sort the Array using insertion sort.");
+            System.out.println("12) Exit.");
             int op = sc.nextInt();
 
             switch (op) {
@@ -95,11 +102,9 @@ public class TestApplication {
                     break;
                 }
                 default: {
-                    System.out.println("Enter a operation.");
+                    System.out.println("Enter an operation.");
                 }
             }
         }
     }
-
 }
-
