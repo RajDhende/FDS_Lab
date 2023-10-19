@@ -6,8 +6,8 @@ package Assignments.Assignment4;
  * @param <T> The type of elements representing the processes.
  */
 class RoundRobinSchedular<T> {
-    private Queue<T> queue; // The queue to manage the scheduling of processes
-    private int timeQuantum; // The time quantum for each process
+    private final Queue<T> queue; // The queue to manage the scheduling of processes
+    private final int timeQuantum; // The time quantum for each process
 
     /**
      * Creates a new RoundRobinSchedular instance.
