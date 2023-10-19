@@ -1,11 +1,22 @@
 package Assignments.Assignment3;
-
+import java.util.Random;
 /**
  * This class represents a custom array of long values and provides various methods for manipulation.
  */
 public class MyLongArray {
     public long a[];
-    private int currentIndex;
+    public int currentIndex;
+
+    /**
+     * Fills the array 'a' with random long values.
+     */
+    public void fillWithRandomValues() {
+        Random random = new Random();
+        for (int i = 0; i < a.length; i++) {
+            a[i] = random.nextLong(100);
+        }
+        currentIndex = a.length;
+    }
 
     /**
      * Constructor to create a MyLongArray with a given size.
@@ -15,6 +26,8 @@ public class MyLongArray {
         this.a = new long[size];
         this.currentIndex = 0;
     }
+
+
 
     /**
      * Copies the values of the array 'a' into another array 'b'.

@@ -28,10 +28,11 @@ public class TestApplication {
             System.out.println("6) Delete a duplicate value");
             System.out.println("7) Insert an element at a particular index.");
             System.out.println("8) Delete an element at a particular index.");
-            System.out.println("9) Sort the Array using bubble sort.");
-            System.out.println("10) Sort the Array using selection sort.");
-            System.out.println("11) Sort the Array using insertion sort.");
-            System.out.println("12) Exit.");
+            System.out.println("9) Fill the Array with random values");
+            System.out.println("10) Sort the Array using bubble sort.");
+            System.out.println("11) Sort the Array using selection sort.");
+            System.out.println("12) Sort the Array using insertion sort.");
+            System.out.println("13) Exit.");
             int op = sc.nextInt();
 
             switch (op) {
@@ -86,18 +87,22 @@ public class TestApplication {
                     break;
                 }
                 case (9): {
-                    st.bubbleSort(la);
+                    la.fillWithRandomValues();
                     break;
                 }
                 case (10): {
-                    st.selectionSort(la);
+                    st.bubbleSort(la);
                     break;
                 }
                 case (11): {
-                    st.insertionSort(la);
+                    st.selectionSort(la);
                     break;
                 }
                 case (12): {
+                    st.insertionSort(la);
+                    break;
+                }
+                case (13): {
                     loop = false;
                     break;
                 }
