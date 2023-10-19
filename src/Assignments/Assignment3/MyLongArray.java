@@ -4,7 +4,7 @@ import java.util.Random;
  * This class represents a custom array of long values and provides various methods for manipulation.
  */
 public class MyLongArray {
-    public long a[];
+    public long[] a;
     public int currentIndex;
 
     /**
