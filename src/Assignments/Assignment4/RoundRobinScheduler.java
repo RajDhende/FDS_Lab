@@ -44,12 +44,12 @@ class RoundRobinSchedular<T> {
 
                     // Execute the process for the time quantum or the remaining time, whichever is smaller
                     int executionTime = Math.min(remainingTime[i], timeQuantum);
-                    remainingTime[i] -= executionTime;
+                    remainingTime[i] = remainingTime[i] - executionTime;
 
                     // Add the process to the queue
                     queue.enQueue(processes[i]);
 
-                    currentTime += executionTime;
+                    currentTime = currentTime + executionTime;
 
                     // Check if the process has completed its execution
                     if (remainingTime[i] == 0) {
