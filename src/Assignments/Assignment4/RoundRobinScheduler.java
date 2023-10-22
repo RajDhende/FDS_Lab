@@ -1,21 +1,18 @@
 package Assignments.Assignment4;
 
-/**
- * A class that simulates round-robin scheduling of processes.
- *
- * @param <T> The type of elements representing the processes.
- */
-class RoundRobinSchedular<T> {
+import java.util.Scanner;
+
+class RoundRobinScheduler<T> {
     private final Queue<T> queue; // The queue to manage the scheduling of processes
     private final int timeQuantum; // The time quantum for each process
 
     /**
-     * Creates a new RoundRobinSchedular instance.
+     * Creates a new RoundRobinScheduler instance.
      *
-     * @param queueSize     The maximum size of the scheduling queue.
-     * @param timeQuantum   The time quantum allocated to each process.
+     * @param queueSize   The maximum size of the scheduling queue.
+     * @param timeQuantum The time quantum allocated to each process.
      */
-    public RoundRobinSchedular(int queueSize, int timeQuantum) {
+    public RoundRobinScheduler(int queueSize, int timeQuantum) {
         this.queue = new Queue<>(queueSize);
         this.timeQuantum = timeQuantum;
     }
@@ -48,7 +45,6 @@ class RoundRobinSchedular<T> {
 
                     // Add the process to the queue
                     queue.enQueue(processes[i]);
-
                     currentTime = currentTime + executionTime;
 
                     // Check if the process has completed its execution
@@ -68,17 +64,27 @@ class RoundRobinSchedular<T> {
     }
 
     /**
-     * The main method that demonstrates the usage of the RoundRobinSchedular class.
+     * The main method that demonstrates the usage of the RoundRobinScheduler class.
      *
      * @param args The command line arguments (not used in this program).
      */
     public static void main(String[] args) {
-        // Example usage
-        String[] processes = {"P1", "P2", "P3", "P4"};
-        int timeQuantum = 4;
-        int queueSize = processes.length;
+        Scanner scanner = new Scanner(System.in);
 
-        RoundRobinSchedular<String> scheduler = new RoundRobinSchedular<>(queueSize, timeQuantum);
+        System.out.print("Enter the number of processes: ");
+        int numProcesses = scanner.nextInt();
+
+        String[] processes = new String[numProcesses];
+
+        for (int i = 0; i < numProcesses; i++) {
+            System.out.print("Enter the name of process " + (i + 1) + ": ");
+            processes[i] = scanner.next();
+        }
+
+        System.out.print("Enter the time quantum: ");
+        int timeQuantum = scanner.nextInt();
+
+        RoundRobinScheduler<String> scheduler = new RoundRobinScheduler<>(numProcesses, timeQuantum);
         scheduler.schedule(processes);
     }
 }

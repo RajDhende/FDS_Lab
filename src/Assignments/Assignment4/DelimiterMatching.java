@@ -1,8 +1,7 @@
 package Assignments.Assignment4;
 
-/**
- * The DelimiterMatching class is used to check if delimiters (brackets) in a given string are properly matched.
- */
+import java.util.Scanner;
+
 public class DelimiterMatching extends Stacks {
 
     /**
@@ -21,11 +20,12 @@ public class DelimiterMatching extends Stacks {
      * @return True if delimiters are properly matched, false otherwise.
      */
     public static boolean isDelimiterMatched(String input) {
-        Stacks<Character> stack = new Stacks<>(10);
-        char[] character = input.toCharArray();
+        Stacks<Character> stack = new Stacks<>(input.length()); // Adjust stack size based on the input string length
 
-        for (int i = 0; i < character.length; i++) {
-            char ch = character[i];
+        char[] characters = input.toCharArray();
+
+        for (int i = 0; i < characters.length; i++) {
+            char ch = characters[i];
             if (ch == '(' || ch == '{' || ch == '[') {
                 stack.Push(ch);
             } else if (ch == ')' || ch == '}' || ch == ']') {
@@ -48,8 +48,11 @@ public class DelimiterMatching extends Stacks {
      * @param args The command-line arguments (not used in this example).
      */
     public static void main(String[] args) {
-        String bracket = "{}()[]()";
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string with brackets: ");
+        String bracket = scanner.nextLine();
+
         boolean result = isDelimiterMatched(bracket);
-        System.out.println(result);
+        System.out.println("Brackets are properly matched: " + result);
     }
 }
