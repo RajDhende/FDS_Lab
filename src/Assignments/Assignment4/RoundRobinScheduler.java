@@ -1,90 +1,83 @@
 package Assignments.Assignment4;
-
 import java.util.Scanner;
 
-class RoundRobinScheduler<T> {
-    private final Queue<T> queue; // The queue to manage the scheduling of processes
-    private final int timeQuantum; // The time quantum for each process
+/**
+ * This class represents a process with a name and execution time.
+ */
+class Process {
+    String name;
+    int time;
 
     /**
-     * Creates a new RoundRobinScheduler instance.
-     *
-     * @param queueSize   The maximum size of the scheduling queue.
-     * @param timeQuantum The time quantum allocated to each process.
+     * Initializes a new Process with the given name and execution time.
+     * @param name The name of the process.
+     * @param time The execution time required for the process.
      */
-    public RoundRobinScheduler(int queueSize, int timeQuantum) {
-        this.queue = new Queue<>(queueSize);
+    public Process(String name, int time) {
+        this.name = name;
+        this.time = time;
+    }
+}
+
+/**
+ * This class represents a Round Robin Scheduler for scheduling processes.
+ */
+public class RoundRobinScheduler {
+    private int timeQuantum;
+    private Queue<Process> processQueue;
+
+    /**
+     * Initializes a Round Robin Scheduler with the specified queue size and time quantum.
+     * @param size The maximum number of processes that can be enqueued.
+     * @param timeQuantum The time quantum for each process execution.
+     */
+    public RoundRobinScheduler(int size, int timeQuantum) {
         this.timeQuantum = timeQuantum;
+        this.processQueue = new Queue<>(size);
     }
 
     /**
-     * Schedules an array of processes using round-robin scheduling.
-     *
-     * @param processes An array of processes to be scheduled.
+     * Schedules and executes processes in a round-robin fashion.
      */
-    public void schedule(T[] processes) {
-        int[] remainingTime = new int[processes.length];
+    public void schedule() {
+        while (!processQueue.isEmpty()) {
+            Process process = processQueue.deQueue();
 
-        // Initialize remainingTime array with the burst times of processes
-        for (int i = 0; i < processes.length; i++) {
-            remainingTime[i] = timeQuantum;
-        }
-
-        int currentTime = 0;
-
-        while (true) {
-            boolean allProcessesCompleted = true;
-
-            for (int i = 0; i < processes.length; i++) {
-                if (remainingTime[i] > 0) {
-                    allProcessesCompleted = false;
-
-                    // Execute the process for the time quantum or the remaining time, whichever is smaller
-                    int executionTime = Math.min(remainingTime[i], timeQuantum);
-                    remainingTime[i] = remainingTime[i] - executionTime;
-
-                    // Add the process to the queue
-                    queue.enQueue(processes[i]);
-                    currentTime = currentTime + executionTime;
-
-                    // Check if the process has completed its execution
-                    if (remainingTime[i] == 0) {
-                        System.out.println("Process " + processes[i] + " completed at time " + currentTime);
-                    } else {
-                        System.out.println("Time " + currentTime + ": Process " + processes[i]);
-                    }
-                }
-            }
-
-            // If all processes have completed, exit the scheduling loop
-            if (allProcessesCompleted) {
-                break;
+            if (process.time > timeQuantum) {
+                process.time -= timeQuantum;
+                System.out.println("Process " + process.name + " executed for " + timeQuantum + " units");
+                processQueue.enQueue(process);
+            } else {
+                System.out.println("Process " + process.name + " executed for " + process.time + " units");
+                System.out.println("Process " + process.name + " completed");
             }
         }
     }
 
     /**
-     * The main method that demonstrates the usage of the RoundRobinScheduler class.
-     *
-     * @param args The command line arguments (not used in this program).
+     * The main method to interact with the Round Robin Scheduler and schedule processes.
+     * @param args Command-line arguments (not used in this program).
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the maximum number of processes: ");
+        int maxProcesses = scanner.nextInt();
+        System.out.println("Enter process details (name time) one per line:");
 
-        System.out.print("Enter the number of processes: ");
-        int numProcesses = scanner.nextInt();
+        RoundRobinScheduler scheduler = new RoundRobinScheduler(maxProcesses, 0);
 
-        String[] processes = new String[numProcesses];
-
-        for (int i = 0; i < numProcesses; i++) {
-            System.out.print("Enter the name of process " + (i + 1) + ": ");
-            processes[i] = scanner.next();
+        for (int i = 0; i < maxProcesses; i++) {
+            String name = scanner.next();
+            int time = scanner.nextInt();
+            scheduler.processQueue.enQueue(new Process(name, time));
         }
 
         System.out.print("Enter the time quantum: ");
         int timeQuantum = scanner.nextInt();
+        scheduler.timeQuantum = timeQuantum;
 
-        RoundRobinScheduler<String> scheduler = new RoundRobinScheduler<>(numProcesses, timeQuantum);
-        scheduler.schedule(processes);
+        scanner.close();
+
+        scheduler.schedule();
     }
 }
