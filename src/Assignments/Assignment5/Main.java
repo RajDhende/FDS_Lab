@@ -28,7 +28,6 @@ public class Main {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextInt();  // Consume the newInt character
 
             switch (choice) {
                 case 1:
@@ -88,7 +87,7 @@ public class Main {
         Iterator<Integer> iterator = list.iterator();
         System.out.println("List Contents:");
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            System.out.print(iterator.next() + " ");
         }
     }
 }
