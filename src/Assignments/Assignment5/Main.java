@@ -3,16 +3,16 @@ import java.util.Scanner;
 import java.util.Iterator;
 
 /**
- * A simple interactive program for manipulating a LinkedPositionalList of strings.
+ * A simple interactive program for manipulating a LinkedPositionalList of Integers.
  */
 public class Main {
     /**
      * Main entry point for the program.
      *
-     * @param args The command-line arguments (not used in this program).
+     * @param args The command-Int arguments (not used in this program).
      */
     public static void main(String[] args) {
-        LinkedPositionalList<String> list = new LinkedPositionalList<>();
+        LinkedPositionalList<Integer> list = new LinkedPositionalList<>();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -28,43 +28,43 @@ public class Main {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume the newline character
+            scanner.nextInt();  // Consume the newInt character
 
             switch (choice) {
                 case 1:
                     System.out.print("Enter the element to add at the front: ");
-                    String element = scanner.nextLine();
+                    Integer element = scanner.nextInt();
                     list.addFirst(element);
                     break;
                 case 2:
                     System.out.print("Enter the element to add at the back: ");
-                    element = scanner.nextLine();
+                    element = scanner.nextInt();
                     list.addLast(element);
                     break;
                 case 3:
                     System.out.print("Enter the element to add: ");
-                    element = scanner.nextLine();
+                    element = scanner.nextInt();
                     System.out.print("Enter the position before which to add: ");
-                    Position<String> beforePos = list.first();
+                    Position<Integer> beforePos = list.first();
                     list.addBefore(beforePos, element);
                     break;
                 case 4:
                     System.out.print("Enter the element to add: ");
-                    element = scanner.nextLine();
+                    element = scanner.nextInt();
                     System.out.print("Enter the position after which to add: ");
-                    Position<String> afterPos = list.first();
+                    Position<Integer> afterPos = list.first();
                     list.addAfter(afterPos, element);
                     break;
                 case 5:
                     System.out.print("Enter the new element: ");
-                    element = scanner.nextLine();
+                    element = scanner.nextInt();
                     System.out.print("Enter the position to replace: ");
-                    Position<String> replacePos = list.first();
+                    Position<Integer> replacePos = list.first();
                     list.set(replacePos, element);
                     break;
                 case 6:
                     System.out.print("Enter the position to remove: ");
-                    Position<String> removePos = list.first();
+                    Position<Integer> removePos = list.first();
                     list.remove(removePos);
                     break;
                 case 7:
@@ -84,8 +84,8 @@ public class Main {
      *
      * @param list The LinkedPositionalList to print.
      */
-    private static void printList(LinkedPositionalList<String> list) {
-        Iterator<String> iterator = list.iterator();
+    private static void printList(LinkedPositionalList<Integer> list) {
+        Iterator<Integer> iterator = list.iterator();
         System.out.println("List Contents:");
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
