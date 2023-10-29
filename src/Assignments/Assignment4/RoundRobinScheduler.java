@@ -7,7 +7,6 @@ import java.util.Scanner;
 class Process {
     String name;
     int time;
-
     /**
      * Initializes a new Process with the given name and execution time.
      * @param name The name of the process.
@@ -62,12 +61,12 @@ public class RoundRobinScheduler {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the maximum number of processes: ");
         int maxProcesses = scanner.nextInt();
-        System.out.println("Enter process details (name time) one per line:");
-
         RoundRobinScheduler scheduler = new RoundRobinScheduler(maxProcesses, 0);
 
         for (int i = 0; i < maxProcesses; i++) {
+            System.out.print("Enter the name of the process : ");
             String name = scanner.next();
+            System.out.print("Enter the time alloted to the process : ");
             int time = scanner.nextInt();
             scheduler.processQueue.enQueue(new Process(name, time));
         }

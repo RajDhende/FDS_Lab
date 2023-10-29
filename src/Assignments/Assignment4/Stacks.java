@@ -4,7 +4,7 @@ package Assignments.Assignment4;
  * A generic stack data structure.
  * @param <T> The type of elements stored in the stack.
  */
-public class Stacks<T> {
+public class Stacks<T> implements Stack<T> {
     private T[] a; // Array to store elements
     private int topOfStack; // Index of the top element
     private int size; // Number of elements in the stack
@@ -76,4 +76,40 @@ public class Stacks<T> {
             return a[topOfStack];
         }
     }
+}
+
+/**
+ * A generic stack interface.
+ * @param <T> The type of elements stored in the stack.
+ */
+interface Stack<T> {
+    /**
+     * Checks if the stack is empty.
+     * @return True if the stack is empty, false otherwise.
+     */
+    boolean isEmpty();
+
+    /**
+     * Checks if the stack is full.
+     * @return True if the stack is full, false otherwise.
+     */
+    boolean isFull();
+
+    /**
+     * Pushes a new element onto the stack.
+     * @param value The element to be pushed onto the stack.
+     */
+    void Push(T value);
+
+    /**
+     * Pops and removes the top element from the stack.
+     * @return The top element of the stack, or null if the stack is empty.
+     */
+    T Pop();
+
+    /**
+     * Peeks at the top element of the stack without removing it.
+     * @return The top element of the stack, or null if the stack is empty.
+     */
+    T Peek();
 }
