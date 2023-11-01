@@ -75,7 +75,7 @@ public class Main {
     public static void printList(LinkedPositionalList<String> list) {
         Iterator<String> iterator = list.iterator();
         while (iterator.hasNext()) {
-            System.out.print(iterator.next());
+            System.out.print(iterator.next() + " ");
         }
         System.out.println();
     }
