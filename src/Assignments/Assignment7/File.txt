@@ -1,0 +1,5 @@
+Electronics
+R&D,Sales,Purchasing,Manufacturing
+Domestic,Internation,TV,CD,Tuner
+Canada,S.America,Overseas
+Africa,Europe,Asia,Austraila
