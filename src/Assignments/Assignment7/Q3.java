@@ -21,7 +21,7 @@ class TreeNode {
 /**
  * Represents an expression tree and provides methods to create and display it.
  */
-class Q4 {
+class ExpressionTree {
 
     /**
      * Creates an expression tree that matches the provided infix expression.
