@@ -21,23 +21,26 @@ class TreeNode {
 /**
  * Represents an expression tree and provides methods to create and display it.
  */
-class ExpressionTree {
+class Q4 {
 
     /**
-     * Creates an example expression tree.
+     * Creates an expression tree that matches the provided infix expression.
      *
      * @return The root node of the expression tree.
      */
     static TreeNode createExpressionTree() {
-        // Constructing the expression tree with sample values
+        // Constructing the expression tree to match the provided infix expression
         TreeNode root = new TreeNode("-");
         root.left = new TreeNode("/");
         root.right = new TreeNode("+");
         root.left.left = new TreeNode("*");
         root.left.right = new TreeNode("+");
 
-        root.left.left.left = new TreeNode("3");
-        root.left.left.right = new TreeNode("1");
+        root.left.left.left = new TreeNode("+");
+        root.left.left.right = new TreeNode("3");
+
+        root.left.left.left.left = new TreeNode("3");
+        root.left.left.left.right = new TreeNode("1");
 
         root.left.right.left = new TreeNode("-");
         root.left.right.right = new TreeNode("2");
@@ -57,23 +60,38 @@ class ExpressionTree {
     }
 
     /**
-     * Displays the expression represented by the given expression tree.
+     * Displays the expression represented by the given expression tree in a specific format.
      *
-     * @param node The root node of the expression tree.
+     * @param treeNode The root node of the expression tree.
      */
-    static void displayExpression(TreeNode node) {
-        if (node != null) {
-            if (node.left != null || node.right != null) {
+    static void displayExpressionInFormat(TreeNode treeNode) {
+        if (treeNode != null) {
+            if (treeNode.left != null || treeNode.right != null) {
                 System.out.print("(");
             }
 
-            displayExpression(node.left);
-            System.out.print(node.value);
-            displayExpression(node.right);
+            displayExpressionInFormat(treeNode.left);
+            System.out.print(treeNode.value);
+            displayExpressionInFormat(treeNode.right);
 
-            if (node.left != null || node.right != null) {
+            if (treeNode.left != null || treeNode.right != null) {
                 System.out.print(")");
             }
+        }
+    }
+
+    /**
+     * Displays the expression tree using a similar structure as the provided printTree method.
+     *
+     * @param treeNode   The current node in the traversal.
+     * @param prefix The prefix for indentation.
+     * @param isLeft True if the current node is the left child, false otherwise.
+     */
+    static void printExpressionTree(TreeNode treeNode, String prefix, boolean isLeft) {
+        if (treeNode != null) {
+            printExpressionTree(treeNode.right, prefix + (isLeft ? "│   " : "    "), false);
+            System.out.println(prefix + (isLeft ? "└── " : "┌── ") + treeNode.value);
+            printExpressionTree(treeNode.left, prefix + (isLeft ? "    " : "│   "), true);
         }
     }
 
@@ -86,8 +104,13 @@ class ExpressionTree {
         // Create an expression tree
         TreeNode root = createExpressionTree();
 
-        // Display the expression
-        System.out.print("Expression: ");
-        displayExpression(root);
+        // Display the expression in the desired format
+        System.out.print("The Expression is: ");
+        displayExpressionInFormat(root);
+
+        // Display the expression tree structure
+        System.out.println("\nExpression Tree Structure:");
+        printExpressionTree(root, "", true);
     }
 }
+
