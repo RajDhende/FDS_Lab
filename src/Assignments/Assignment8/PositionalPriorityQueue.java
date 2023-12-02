@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * @param <K> the type of keys stored in the priority queue
  * @param <V> the type of values stored in the priority queue
  */
-public class PositionalPriorityQueue<K, V> {
+public class PositionalPriorityQueue<K extends Comparable<K>, V> {
     /**
      * The underlying positional list to store the entries of the priority queue.
      */
@@ -31,10 +31,17 @@ public class PositionalPriorityQueue<K, V> {
      */
     public Position<PositionalPriorityQueueEntry<K, V>> insert(K key, V value) {
         PositionalPriorityQueueEntry<K, V> entry = new PositionalPriorityQueueEntry<>(key, value, null);
-        Position<PositionalPriorityQueueEntry<K, V>> position = data.addLast(entry);
-        entry.setPosition(position);
-        return position;
+        Position<PositionalPriorityQueueEntry<K, V>> current = data.first();
+        while (current != null && key.compareTo(current.getElement().getKey()) >= 0) {
+            current = data.after(current);
+        }
+        if (current == null) {
+            return data.addLast(entry);
+        } else {
+            return data.before(current, entry);
+        }
     }
+
 
     /**
      * Retrieves the entry with the minimum key from the priority queue.
@@ -60,11 +67,22 @@ public class PositionalPriorityQueue<K, V> {
         if (isEmpty()) {
             throw new NoSuchElementException("Priority queue is empty");
         }
-        Position<PositionalPriorityQueueEntry<K, V>> minPosition = data.first();
+        Position<PositionalPriorityQueueEntry<K, V>> minPosition = findMinPosition();
         PositionalPriorityQueueEntry<K, V> minEntry = minPosition.getElement();
         data.remove(minPosition);
         return minEntry;
     }
+
+    private Position<PositionalPriorityQueueEntry<K, V>> findMinPosition() {
+        Position<PositionalPriorityQueueEntry<K, V>> minPosition = data.first();
+        for (Position<PositionalPriorityQueueEntry<K, V>> position : data.positions()) {
+            if (position.getElement().getKey().compareTo(minPosition.getElement().getKey()) < 0) {
+                minPosition = position;
+            }
+        }
+        return minPosition;
+    }
+
 
     /**
      * Returns the number of entries in the priority queue.
