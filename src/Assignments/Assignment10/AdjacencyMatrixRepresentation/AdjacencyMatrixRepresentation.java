@@ -1,4 +1,4 @@
-package Assignments.Assignment9.AdjacencyMatrixRepresentation;
+package Assignments.Assignment10.AdjacencyMatrixRepresentation;
 
 import java.util.*;
 

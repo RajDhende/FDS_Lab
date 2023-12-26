@@ -1,4 +1,4 @@
-package Assignments.Assignment9.EdgeListRepresentation;
+package Assignments.Assignment10.EdgeListRepresentation;
 
 import java.util.ArrayList;
 import java.util.Iterator;

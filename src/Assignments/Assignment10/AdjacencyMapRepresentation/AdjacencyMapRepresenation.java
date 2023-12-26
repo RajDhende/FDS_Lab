@@ -1,4 +1,4 @@
-package Assignments.Assignment9.AdjacencyMapRepresentation;
+package Assignments.Assignment10.AdjacencyMapRepresentation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
