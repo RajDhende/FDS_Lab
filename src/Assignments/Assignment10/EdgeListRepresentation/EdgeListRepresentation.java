@@ -384,20 +384,57 @@ class Graph<T> {
                         break;
 
                     case 7:
-                        // ... (existing code)
+                        System.out.print("Enter vertex element: ");
+                        String outVertexElement = scanner.next();
+                        Vertex<String> outVertex = findVertex(graph, outVertexElement);
+
+                        if (outVertex != null) {
+                            System.out.println("Outgoing edges from vertex " + outVertex.element + ":");
+                            for (Iterator<Edge<String>> it = graph.outGoingEdges(outVertex); it.hasNext();) {
+                                Edge<String> edge = it.next();
+                                System.out.println(edge.element);
+                            }
+                        } else {
+                            System.out.println("Vertex not found.");
+                        }
                         break;
 
                     case 8:
-                        // ... (existing code)
+                        System.out.print("Enter vertex element: ");
+                        String inVertexElement = scanner.next();
+                        Vertex<String> inVertex = findVertex(graph, inVertexElement);
+
+                        if (inVertex != null) {
+                            graph.displayIncomingEdges(inVertex);
+                        } else {
+                            System.out.println("Vertex not found.");
+                        }
                         break;
 
                     case 9:
-                        // ... (existing code)
+                        System.out.print("Enter vertex element: ");
+                        String inDegreeVertexElement = scanner.next();
+                        Vertex<String> inDegreeVertex = findVertex(graph, inDegreeVertexElement);
+
+                        if (inDegreeVertex != null) {
+                            graph.displayInDegree(inDegreeVertex);
+                        } else {
+                            System.out.println("Vertex not found.");
+                        }
                         break;
 
                     case 10:
-                        // ... (existing code)
+                        System.out.print("Enter vertex element: ");
+                        String outDegreeVertexElement = scanner.next();
+                        Vertex<String> outDegreeVertex = findVertex(graph, outDegreeVertexElement);
+
+                        if (outDegreeVertex != null) {
+                            graph.displayOutDegree(outDegreeVertex);
+                        } else {
+                            System.out.println("Vertex not found.");
+                        }
                         break;
+
 
                     case 11:
                         System.out.println("Exiting the program.");

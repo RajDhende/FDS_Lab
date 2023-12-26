@@ -270,15 +270,11 @@ class GraphInterface {
             System.out.println("5. Print Vertices");
             System.out.println("6. Print Edges");
             System.out.println("7. Get Edge");
-            System.out.println("8. End Vertices");
-            System.out.println("9. Opposite Vertex");
-            System.out.println("10. Out Degree");
-            System.out.println("11. In Degree");
-            System.out.println("12. Outgoing Edges");
-            System.out.println("13. Incoming Edges");
-            System.out.println("14. Insert Vertex");
-            System.out.println("15. Insert Edge");
-            System.out.println("16. Exit");
+            System.out.println("8. Out Degree");
+            System.out.println("9. In Degree");
+            System.out.println("10. Outgoing Edges");
+            System.out.println("11. Incoming Edges");
+            System.out.println("12. Exit");
             System.out.println("Enter your choice:");
             int choice = scanner.nextInt();
 
@@ -328,50 +324,28 @@ class GraphInterface {
                     v = scanner.nextInt();
                     System.out.println("The edge is: " + graph.getEdge(u, v));
                     break;
+
                 case 8:
-                    System.out.println("Enter the edge to get the end vertices:");
-                    e = scanner.next();
-                    System.out.println("The end vertices are: " + Arrays.toString(graph.endVertices(e)));
-                    break;
-                case 9:
-                    System.out.println("Enter the vertex and edge to get the opposite vertex:");
-                    v = scanner.nextInt();
-                    e = scanner.next();
-                    System.out.println("The opposite vertex is: " + graph.opposite(v, e));
-                    break;
-                case 10:
                     System.out.println("Enter the vertex to get the out degree:");
                     v = scanner.nextInt();
                     System.out.println("The out degree is: " + graph.outDegree(v));
                     break;
-                case 11:
+                case 9:
                     System.out.println("Enter the vertex to get the in degree:");
                     v = scanner.nextInt();
                     System.out.println("The in degree is: " + graph.inDegree(v));
                     break;
-                case 12:
+                case 10:
                     System.out.println("Enter the vertex to get the outgoing edges:");
                     v = scanner.nextInt();
                     System.out.println("The outgoing edges are: " + graph.outGoingEdges(v));
                     break;
-                case 13:
+                case 11:
                     System.out.println("Enter the vertex to get the incoming edges:");
                     v = scanner.nextInt();
                     System.out.println("The incoming edges are: " + graph.inComingEdges(v));
                     break;
-                case 14:
-                    System.out.println("Enter the vertex to insert:");
-                    v = scanner.nextInt();
-                    graph.insertVertex(v);
-                    break;
-                case 15:
-                    System.out.println("Enter the vertices u and v and the edge to insert:");
-                    u = scanner.nextInt();
-                    v = scanner.nextInt();
-                    int x = scanner.nextInt();
-                    graph.insertEdge(u, v, x);
-                    break;
-                case 16:
+                case 12:
                     System.out.println("Exiting...");
                     scanner.close();
                     System.exit(0);
