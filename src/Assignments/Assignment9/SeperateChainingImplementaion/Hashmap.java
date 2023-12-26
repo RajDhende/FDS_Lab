@@ -8,7 +8,7 @@ import java.util.*;
  * @param <K> The type of keys.
  * @param <V> The type of values.
  */
-class AbstractHashMap<K, V> {
+class SeperateChainingHashmap<K, V> {
     /**
      * Inner class representing an entry in the hash map.
      *
@@ -40,7 +40,7 @@ class AbstractHashMap<K, V> {
      *
      * @param capacity The initial capacity of the hash map.
      */
-    public AbstractHashMap(int capacity) {
+    public SeperateChainingHashmap(int capacity) {
         this.capacity = capacity;
         createTable();
     }
@@ -198,7 +198,7 @@ class HashMapInterface {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the initial capacity of the HashMap:");
         int capacity = scanner.nextInt();
-        AbstractHashMap<Integer, String> hashMap = new AbstractHashMap<>(capacity);
+        SeperateChainingHashmap<Integer, String> hashMap = new SeperateChainingHashmap<>(capacity);
 
         while (true) {
             System.out.println("\n1. Put Key-Value Pair");
@@ -234,7 +234,7 @@ class HashMapInterface {
                         break;
                     case 4:
                         System.out.println("The entries in the HashMap are:");
-                        for (AbstractHashMap.Entry entry : hashMap.entrySet()) {
+                        for (SeperateChainingHashmap.Entry entry : hashMap.entrySet()) {
                             System.out.println("Key: " + entry.key + ", Value: " + entry.value);
                         }
                         break;
