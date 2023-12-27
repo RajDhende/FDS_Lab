@@ -1,3 +1,5 @@
+package Assignments.Assignment6;
+
 import java.util.*;
 /**
  * This program represents a tree data structure and provides various operations on the tree,

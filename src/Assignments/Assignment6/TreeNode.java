@@ -1,3 +1,5 @@
+package Assignments.Assignment6;
+
 import java.util.*;
 /**
  * Represents a tree node with generic data.
