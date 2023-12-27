@@ -1,5 +1,7 @@
 package Assignments.Assignment7;
 
+import java.util.Scanner;
+
 /**
  * Represents a node in an expression tree.
  */
@@ -103,14 +105,30 @@ class ExpressionTree {
     public static void main(String[] args) {
         // Create an expression tree
         TreeNode root = createExpressionTree();
-
-        // Display the expression in the desired format
-        System.out.print("The Expression is: ");
-        displayExpressionInFormat(root);
-
-        // Display the expression tree structure
-        System.out.println("\nExpression Tree Structure:");
-        printExpressionTree(root, "", true);
+        Scanner sc = new Scanner(System.in);
+        boolean loop = true;
+        while(loop){
+            System.out.println("\n1) Display the Expression");
+            System.out.println("2) Display the Tree");
+            System.out.println("3) Exit");
+            System.out.print("Enter option: ");
+            int x = sc.nextInt();
+            switch(x){
+                case 1:
+                    System.out.println("The Expression is: ");
+                    displayExpressionInFormat(root);
+                    break;
+                case 2:
+                    System.out.println("The Expression Tree structure is:");
+                    printExpressionTree(root, "", true);
+                    break;
+                case 3:
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("Enter a valid input");
+            }
+        }
     }
 }
 
